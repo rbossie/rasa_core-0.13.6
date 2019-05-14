@@ -232,14 +232,14 @@ class RasaNLUInterpreter(NaturalLanguageInterpreter):
         else:
             self.interpreter = None
 
-    def parse(self, text):
+    def parse(self, text, tracker):
         """Parse a text message.
 
         Return a default value if the parsing of the text failed."""
 
         if self.lazy_init and self.interpreter is None:
             self._load_interpreter()
-        return self.interpreter.parse(text)
+        return self.interpreter.parse(text, tracker)
 
     def _load_interpreter(self):
         from rasa_nlu.model import Interpreter
